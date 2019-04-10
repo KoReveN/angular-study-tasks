@@ -1,1 +1,13 @@
 node_modules
+src/tslint.json
+angular.json
+package.json
+package-lock.json
+tsconfig.json
+tslint.json
+src/karma.conf.js
+src/tsconfig.app.json
+src/tsconfig.spec.json
+angular.json
+package.json
+angular.json
