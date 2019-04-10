@@ -8,14 +8,22 @@ import { Component } from "@angular/core";
     <div mouseOverEvent 
     (onHover)="onHover()" 
     (onHoverOut)="onHoverOut()" 
-     > Some element </div>
+     > Mouse over this element </div>
     <p>{{isMouseOver ? 'Курсор мышки внутри элемента' : 'Курсор мышки вне элемента'}}</p>
 
+
+    <br/> Task: 2_ 
+    <div clickOutside (onClickOutside)="onClickOutside()" >
+        Click outside this element
+        <p>Outside click count: {{count}}</p>
+    </div>
+    
     `
 })
 export class TaskComponent{
 
     private isMouseOver = false;
+    private count: number = 0;
 
     public onHover(){
         this.isMouseOver = true;
@@ -23,6 +31,10 @@ export class TaskComponent{
 
     public onHoverOut(){
         this.isMouseOver = false;
+    }
+
+    public onClickOutside(){
+        this.count++;
     }
 
 }
