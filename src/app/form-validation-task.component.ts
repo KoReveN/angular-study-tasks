@@ -17,13 +17,15 @@ export class FormValidationTask{
     public userForm: FormGroup;
 
 
-    constructor(private formBuilder: FormBuilder, private emailValidator: EmailValidator){
-        this.userForm = formBuilder.group({
-           "firstName": ["", [Validators.required, Validators.pattern("[A-Za-zА-Яа-яЁё]{3,20}")]],
-           "lastName" : ["",[Validators.required, Validators.pattern("[A-Za-zА-Яа-яЁё]{3,20}")]],
-           "age": ["",[Validators.required, Validators.min(18), Validators.max(120)]],
-           "email": ["",[Validators.required, Validators.email, this.emailValidator.blockMailRu]],
-        });
+    constructor(private formBuilder: FormBuilder, private emailValidator: EmailValidator){ }
+
+    ngOnInit(): void {
+        this.userForm = this.formBuilder.group({
+            "firstName": ["", [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern("[A-Za-zА-Яа-яЁё]+")]],
+            "lastName" : ["",[Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern("[A-Za-zА-Яа-яЁё]+")]],
+            "age": ["",[Validators.required, Validators.min(18), Validators.max(120)]],
+            "email": ["",[Validators.required, Validators.email, this.emailValidator.blockMailRu]],
+         });
     }
 
     public submit(){
@@ -34,4 +36,12 @@ export class FormValidationTask{
             // DO some work
         }
     }
+
+    get firstName() { return this.userForm.get('firstName');}
+    get lastName() { return this.userForm.get('lastName');}
+    get age() { return this.userForm.get('age');}
+    get email() { return this.userForm.get('email');}
+
+
+
 }
