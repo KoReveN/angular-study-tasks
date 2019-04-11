@@ -4,7 +4,7 @@ export class EmailValidator{
 
     public blockMailRu(control: FormControl): {[s:string]:boolean}{
         if (control.value.endsWith("mail.ru")){
-            return {"email": true};
+            return {"mailrublock": true};
         } 
         return null;
     }
