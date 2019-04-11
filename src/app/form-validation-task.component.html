@@ -1,28 +1,36 @@
 <form [formGroup]="userForm" novalidate (ngSubmit)="submit()" 
-    class="col-xs-6">
+    class="col-xs-6" [ngClass]="{submited: isSubmit}">
 
     <div class="form-group">
         <label>First name</label>
-        <input class="form-control" [ngClass]="{submited: isSubmit}"
-            name="firstName" formControlName="firstName"/>
+        <input class="form-control" name="firstName" formControlName="firstName"/>
+            <div [hidden]="!isSubmit || userForm.controls['firstName'].valid" class="alert alert-danger">
+                Incorrect First name
+            </div>
     </div> 
 
     <div class="form-group">
         <label>Last name</label>
-        <input class="form-control" [ngClass]="{submited: isSubmit}"
-        name="lasttName" formControlName="lastName" />
+        <input class="form-control" name="lasttName" formControlName="lastName" />
+        <div [hidden]="!isSubmit || userForm.controls['lastName'].valid" class="alert alert-danger">
+            Incorrect Last name
+        </div>
     </div>
 
     <div class="form-group">
         <label>Age</label>
-        <input class="form-control" [ngClass]="{submited: isSubmit}"
-        name="age" formControlName="age"  type="number" />
+        <input class="form-control" name="age" formControlName="age"  type="number" />
+        <div [hidden]="!isSubmit || userForm.controls['age'].valid" class="alert alert-danger">
+            Incorrect Age
+        </div>
     </div>
 
     <div class="form-group">
         <label>Email</label>
-        <input class="form-control" [ngClass]="{submited: isSubmit}"
-        name="email" formControlName="email" type="email"/>
+        <input class="form-control" name="email" formControlName="email" type="email"/>
+        <div [hidden]="!isSubmit || userForm.controls['email'].valid" class="alert alert-danger">
+            Incorrect Email
+        </div>
     </div>
 
     <div class="form-group">
