@@ -80,12 +80,12 @@
 
 </form>
 
-<invalid-counter [formInvalidCount]="invalidCounter"></invalid-counter>
+<invalid-counter [formInvalidCount]="formGroupService.invalidCounter"></invalid-counter>
 
 <div>
-<form-validation-report [listHeader]="'Validation fail:'" [validationReports]="reportsInvalid"></form-validation-report>
+<form-validation-report [listHeader]="'Validation fail:'" [validationReports]="formGroupService.reportsInvalid"></form-validation-report>
 </div>
 
 <div>
-    <form-validation-report [listHeader]="'Validation success:'" [validationReports]="reportsValid"></form-validation-report>
+    <form-validation-report [listHeader]="'Validation success:'" [validationReports]="formGroupService.reportsValid"></form-validation-report>
 </div>

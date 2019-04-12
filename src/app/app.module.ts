@@ -7,6 +7,7 @@ import { ClickOutsideDirective } from "./clickOutside.directive";
 import { FormValidationTask } from "./form-validation-task.component";
 import { InvalidCounter } from "./form-validation-couter.component";
 import { FormValidationReport } from "./form-validation-fails";
+// import { FormGroupService } from "./services/form-group.service";
 
  
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { HelloComponent } from './hello.component';
     InvalidCounter,  
     FormValidationReport,
   ],
-  bootstrap:    [ AppComponent ]
+  bootstrap:    [ AppComponent ],
+  providers: []
 })
 export class AppModule { }

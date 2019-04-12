@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { NgForm, FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmailValidator } from "./validators/email-validator";
+import { FormGroupService } from './services/form-group.service';
 
 @Component({
     selector: 'form-validation-task',
@@ -9,17 +10,19 @@ import { EmailValidator } from "./validators/email-validator";
     .submited input.ng-valid {border:solid green 2px;}
     `],
     templateUrl: 'form-validation-task.component.html',
-    providers: [ EmailValidator ]
+    providers: [ EmailValidator, FormGroupService ]
 }) 
 export class FormValidationTask{
 
     public isSubmit: boolean = false;
     public userForm: FormGroup;
 
-    public invalidCounter: number =0;
 
 
-    constructor(private formBuilder: FormBuilder, private emailValidator: EmailValidator){ }
+
+    constructor(private formBuilder: FormBuilder, 
+        private emailValidator: EmailValidator,
+        private formGroupService: FormGroupService){ }
 
     ngOnInit(): void {
         this.userForm = this.formBuilder.group({
@@ -34,25 +37,10 @@ export class FormValidationTask{
         this.isSubmit = true;
         console.log(this.userForm);
 
+        this.formGroupService.formSubmit(this.userForm);
         if (this.userForm.valid) {
-            this.invalidCounter++;
-            let reportString: string ="Valid fields: "; 
-            for(var key in this.userForm.controls){
-                if (this.userForm.controls[key].valid) {
-                    reportString += "  " + key;
-                }   
-            }
-            this.reportsValid.push(reportString);
-        } else {
-            this.invalidCounter++;
-            let reportString: string ="Invalid fields: "; 
-            for(var key in this.userForm.controls){
-                if (this.userForm.controls[key].invalid) {
-                    reportString += "  " + key;
-                }   
-            }
-            this.reportsInvalid.push(reportString);
-        }
+            // Some other work
+        } 
     }
 
     get firstName() { return this.userForm.get('firstName');}
@@ -60,8 +48,7 @@ export class FormValidationTask{
     get age() { return this.userForm.get('age');}
     get email() { return this.userForm.get('email');}
 
-    reportsValid: string[] = [];
-    reportsInvalid: string[] = [];
+
 
 }
 
