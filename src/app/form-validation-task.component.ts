@@ -17,9 +17,6 @@ export class FormValidationTask{
     public isSubmit: boolean = false;
     public userForm: FormGroup;
 
-
-
-
     constructor(private formBuilder: FormBuilder, 
         private emailValidator: EmailValidator,
         private formGroupService: FormGroupService){ }

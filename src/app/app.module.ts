@@ -6,13 +6,11 @@ import { TaskDirective } from "./task.directive";
 import { ClickOutsideDirective } from "./clickOutside.directive";
 import { FormValidationTask } from "./form-validation-task.component";
 import { InvalidCounter } from "./form-validation-couter.component";
-import { FormValidationReport } from "./form-validation-report";
 import { EmailValidator } from "./validators/email-validator";
-// import { FormGroupService } from "./services/form-group.service";
-
- 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
+import { FormValidationSuccessReport } from './form-validation-success-report.component';
+import { FormValidationFailReport } from './form-validation-fail-report.component';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, ReactiveFormsModule ],
@@ -24,7 +22,8 @@ import { HelloComponent } from './hello.component';
     ClickOutsideDirective, 
     FormValidationTask,
     InvalidCounter,  
-    FormValidationReport,
+    FormValidationSuccessReport,
+    FormValidationFailReport,
   ],
   bootstrap:    [ AppComponent ],
   providers: [ EmailValidator]
