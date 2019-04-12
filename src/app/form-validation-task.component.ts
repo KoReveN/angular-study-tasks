@@ -10,7 +10,7 @@ import { FormGroupService } from './services/form-group.service';
     .submited input.ng-valid {border:solid green 2px;}
     `],
     templateUrl: 'form-validation-task.component.html',
-    providers: [ EmailValidator, FormGroupService ]
+
 }) 
 export class FormValidationTask{
 
@@ -51,16 +51,3 @@ export class FormValidationTask{
 
 
 }
-
-
-
-
-// Сайт делится на 4 части:
-// 1) [x] Форма, которую ты уже реализовал
-// 2) [x] Счётчик неудачных попыток заполнения формы
-// 3) История в виде списка, что форма была заполнена с N кол-вом невалидных полей. Перечислить эти поля
-// 4) История в виде списка, что форма была заполнена верно. Показать все поля, которые были введены
-
-
-// Постарайся найти гибкое решение. Например, если тебе придётся добавить ещё 1 компонент, 
-// то не нужно будет менять существующую логику

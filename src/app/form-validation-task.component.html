@@ -79,13 +79,3 @@
     
 
 </form>
-
-<invalid-counter [formInvalidCount]="formGroupService.invalidCounter"></invalid-counter>
-
-<div>
-<form-validation-report [listHeader]="'Validation fail:'" [validationReports]="formGroupService.reportsInvalid"></form-validation-report>
-</div>
-
-<div>
-    <form-validation-report [listHeader]="'Validation success:'" [validationReports]="formGroupService.reportsValid"></form-validation-report>
-</div>

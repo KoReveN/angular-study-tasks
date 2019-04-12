@@ -1,13 +1,14 @@
 import { Component, Input } from "@angular/core";
+import { FormGroupService } from './services/form-group.service';
 
 @Component ({
     selector: 'invalid-counter',
     template: `
-    <label>Счётчик неудачных попыток заполнения формы: {{formInvalidCount}} </label>
+    <label>Счётчик неудачных попыток заполнения формы: {{formGroupService.invalidCounter}} </label>
     `
 })
 export class InvalidCounter{
 
-    @Input()
-    public formInvalidCount: number = 0;
+    constructor(private formGroupService: FormGroupService){ }
+
 }

@@ -3,8 +3,9 @@ import { FormGroup } from '@angular/forms';
 
 export class FormGroupService {
 
-    reportsValid: string[] = [];
-    reportsInvalid: string[] = [];
+
+    public reportsValid: string[] = [];
+    public reportsInvalid: string[] = [];
     public invalidCounter: number =0;
 
 
