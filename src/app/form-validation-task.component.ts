@@ -16,6 +16,8 @@ export class FormValidationTask{
     public isSubmit: boolean = false;
     public userForm: FormGroup;
 
+    public invalidCounter: number =0;
+
 
     constructor(private formBuilder: FormBuilder, private emailValidator: EmailValidator){ }
 
@@ -33,7 +35,23 @@ export class FormValidationTask{
         console.log(this.userForm);
 
         if (this.userForm.valid) {
-            // DO some work
+            this.invalidCounter++;
+            let reportString: string ="Valid fields: "; 
+            for(var key in this.userForm.controls){
+                if (this.userForm.controls[key].valid) {
+                    reportString += "  " + key;
+                }   
+            }
+            this.reportsValid.push(reportString);
+        } else {
+            this.invalidCounter++;
+            let reportString: string ="Invalid fields: "; 
+            for(var key in this.userForm.controls){
+                if (this.userForm.controls[key].invalid) {
+                    reportString += "  " + key;
+                }   
+            }
+            this.reportsInvalid.push(reportString);
         }
     }
 
@@ -42,6 +60,20 @@ export class FormValidationTask{
     get age() { return this.userForm.get('age');}
     get email() { return this.userForm.get('email');}
 
-
+    reportsValid: string[] = [];
+    reportsInvalid: string[] = [];
 
 }
+
+
+
+
+// Сайт делится на 4 части:
+// 1) [x] Форма, которую ты уже реализовал
+// 2) [x] Счётчик неудачных попыток заполнения формы
+// 3) История в виде списка, что форма была заполнена с N кол-вом невалидных полей. Перечислить эти поля
+// 4) История в виде списка, что форма была заполнена верно. Показать все поля, которые были введены
+
+
+// Постарайся найти гибкое решение. Например, если тебе придётся добавить ещё 1 компонент, 
+// то не нужно будет менять существующую логику

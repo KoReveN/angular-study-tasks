@@ -79,3 +79,13 @@
     
 
 </form>
+
+<invalid-counter [formInvalidCount]="invalidCounter"></invalid-counter>
+
+<div>
+<form-validation-report [listHeader]="'Validation fail:'" [validationReports]="reportsInvalid"></form-validation-report>
+</div>
+
+<div>
+    <form-validation-report [listHeader]="'Validation success:'" [validationReports]="reportsValid"></form-validation-report>
+</div>
